@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THS Solutions - Dr. Tahani Saleh | Public Health Consulting</title>
+    <meta name="description" content="THS Solutions provides expert public health consulting, research, and advisory services. Led by Dr. Tahani Saleh, specializing in health systems, program management, and evidence-based solutions.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background-color: #ffffff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95 );
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #e8ecef;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1a365d;
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            color: #4a5568;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #2b6cb0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #2b6cb0;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* KVK Badge */
+        .kvk-badge {
+            position: fixed;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+            background: #1a365d;
+            color: white;
+            padding: 12px 18px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(26, 54, 93, 0.3);
+            z-index: 999;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .kvk-badge .kvk-number {
+            display: block;
+            font-size: 1rem;
+            font-weight: 700;
+            margin-top: 4px;
+            color: #63b3ed;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+            padding: 140px 0 100px;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%23e2e8f0;stop-opacity:0.3" /><stop offset="100%" style="stop-color:%23cbd5e0;stop-opacity:0.1" /></linearGradient></defs><circle cx="800" cy="200" r="150" fill="url(%23grad1 )"/><circle cx="900" cy="600" r="100" fill="url(%23grad1)"/></svg>') no-repeat center;
+            background-size: cover;
+            opacity: 0.6;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 3rem;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-text h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #1a365d;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero-text .subtitle {
+            font-size: 1.25rem;
+            color: #4a5568;
+            margin-bottom: 2rem;
+            font-weight: 400;
+            line-height: 1.6;
+        }
+
+        .hero-text .credentials {
+            font-size: 1rem;
+            color: #718096;
+            margin-bottom: 2.5rem;
+            font-weight: 500;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #2b6cb0;
+            color: white;
+            padding: 16px 32px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(43, 108, 176, 0.3);
+        }
+
+        .cta-button:hover {
+            background: #2c5282;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(43, 108, 176, 0.4);
+        }
+
+        .hero-profile {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .profile-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(43, 108, 176, 0.2);
+            border: 3px solid #e2e8f0;
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.3s ease;
+        }
+
+        .profile-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .profile-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            color: #1a365d;
+            margin-bottom: 0.25rem;
+        }
+
+        .profile-info .title {
+            color: #4a5568;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+
+        .profile-info .location {
+            color: #718096;
+            font-size: 0.8rem;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: #1a365d;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            text-align: center;
+            margin-bottom: 4rem;
+            color: #4a5568;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* About Section */
+        .about-section {
+            background: #f7fafc;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            align-items: start;
+            margin-bottom: 4rem;
+        }
+
+        .about-stats {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .stat-item:last-child {
+            border-bottom: none;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #2b6cb0;
+            display: block;
+        }
+
+        .stat-label {
+            color: #4a5568;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        .about-text h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: #1a365d;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: #4a5568;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        .credentials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .credential-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+
+        .credential-item:hover {
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            transform: translateY(-4px);
+        }
+
+        .credential-item h4 {
+            color: #2b6cb0;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .service-card:hover {
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+            transform: translateY(-4px);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: #2b6cb0;
+            border-radius: 4px 0 0 4px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: #edf2f7;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            color: #2b6cb0;
+        }
+
+        .service-card h3 {
+            color: #1a365d;
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .service-card p {
+            color: #4a5568;
+            line-height: 1.6;
+        }
+
+        /* Consultation Section */
+        .consultation-section {
+            background: #1a365d;
+            color: white;
+        }
+
+        .consultation-section .section-title,
+        .consultation-section .section-subtitle {
+            color: white;
+        }
+
+        .consultation-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .feature-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-4px);
+        }
+
+        .feature-item h4 {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .consultation-process {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 3rem;
+            margin: 3rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .process-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .process-step:last-child {
+            margin-bottom: 0;
+        }
+
+        .step-number {
+            background: #2b6cb0;
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: #f7fafc;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .contact-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .contact-card:hover {
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            transform: translateY(-4px);
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: #edf2f7;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: #2b6cb0;
+            font-size: 1.5rem;
+        }
+
+        .contact-card h3 {
+            color: #1a365d;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .contact-card a {
+            color: #2b6cb0;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .contact-card a:hover {
+            color: #2c5282;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a365d;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            border-top: 1px solid #2d3748;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .kvk-badge {
+                position: static;
+                transform: none;
+                margin: 2rem auto;
+                display: block;
+                width: fit-content;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Animation classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- KVK Badge -->
+    <div class="kvk-badge">
+        <div>KVK Registered</div>
+        <div class="kvk-number">95178686</div>
+    </div>
+
+    <!-- Header -->
+    <header id="header">
+        <nav class="container">
+            <a href="#" class="logo">THS Solutions</a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#consultation">Consultation</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Dr. Tahani Saleh</h1>
+                    <p class="subtitle">Transforming global health through evidence-based solutions and strategic consulting</p>
+                    <p class="credentials">Public Health Specialist • Medical Doctor • Academic Researcher</p>
+                    <a href="#consultation" class="cta-button">
+                        <span>Schedule Consultation</span>
+                        <span>→</span>
+                    </a>
+                </div>
+                <div class="hero-profile">
+                    <div class="profile-image">
+                        <img src="https://github.com/TahSal/graph_portfolio/blob/main/WhatsApp%20Image%202025-05-14%20at%2011.17.21%20AM.jpeg?raw=true" alt="Dr. Tahani Saleh" loading="lazy">
+                    </div>
+                    <div class="profile-info">
+                        <h3>Dr. Tahani Saleh</h3>
+                        <p class="title">Founder & Lead Consultant</p>
+                        <p class="location">Rotterdam, Netherlands</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section about-section">
+        <div class="container">
+            <h2 class="section-title">About Dr. Tahani Saleh</h2>
+            <p class="section-subtitle">Leading public health transformation through expertise, innovation, and evidence-based practice</p>
+            
+            <div class="about-content">
+                <div class="about-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">7+</span>
+                        <span class="stat-label">Years Experience</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">50+</span>
+                        <span class="stat-label">Projects Completed</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">3</span>
+                        <span class="stat-label">Research Publications</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">4</span>
+                        <span class="stat-label">Languages</span>
+                    </div>
+                </div>
+                
+                <div class="about-text">
+                    <h3>Expertise in Global Health Solutions</h3>
+                    <p>With over 7 years of professional experience in public health research, program management, and health system strengthening, I specialize in developing innovative solutions for complex health challenges, particularly in emergency and resource-limited settings.</p>
+                    
+                    <p>My expertise spans designing, implementing, and evaluating health programs with a focus on health promotion, prevention, chronic disease management, and advancing health equity. I am deeply committed to improving health outcomes for vulnerable populations through meaningful collaborations and evidence-based research.</p>
+                    
+                    <p>Currently serving as a Scientific Researcher at the Neurodiversity Foundation in Amsterdam, I continue to contribute to groundbreaking research while providing freelance public health consulting services to organizations worldwide.</p>
+                </div>
+            </div>
+            
+            <div class="credentials-grid">
+                <div class="credential-item">
+                    <h4>🎓 Education</h4>
+                    <p><strong>Master in Public Health</strong>  
+Health Systems Policy & Management  
+<em>Royal Tropical Institute (KIT ) & Vrije Universiteit Amsterdam</em></p>
+                </div>
+                <div class="credential-item">
+                    <h4>🏥 Medical Degree</h4>
+                    <p><strong>Bachelor in Medicine & General Surgery</strong>  
+<em>University of Jordan</em></p>
+                </div>
+                <div class="credential-item">
+                    <h4>🔬 Research Training</h4>
+                    <p><strong>Erasmus Summer Programme Fellowship</strong>  
+Research Training in Public Health  
+<em>Erasmus Medical Center, Rotterdam</em></p>
+                </div>
+                <div class="credential-item">
+                    <h4>💻 Technical Skills</h4>
+                    <p><strong>Python Programming</strong>  
+Data Analysis & Research  
+<em>University of Michigan</em></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section">
+        <div class="container">
+            <h2 class="section-title">THS Solutions Services</h2>
+            <p class="section-subtitle">Comprehensive public health consulting, research, and advisory services for organizations, governments, and healthcare institutions worldwide</p>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🏥</div>
+                    <h3>Health Systems Strengthening</h3>
+                    <p>Expert consultation on health system policies, management strategies, and organizational development to improve healthcare delivery and outcomes in diverse settings.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">📊</div>
+                    <h3>Public Health Research</h3>
+                    <p>Comprehensive research services including study design, data analysis, report writing, and evidence synthesis for health programs and policy development.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">🎯</div>
+                    <h3>Program Management</h3>
+                    <p>End-to-end program management for health, nutrition, and WASH initiatives, including assessment, monitoring, evaluation, and capacity building.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">🌍</div>
+                    <h3>Global Health Consulting</h3>
+                    <p>Specialized advisory services for international health projects, emergency response, and health interventions in resource-limited settings.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">📝</div>
+                    <h3>Proposal Writing & Planning</h3>
+                    <p>Professional grant writing, project proposal development, and strategic planning services for health organizations and research institutions.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">🧠</div>
+                    <h3>Neurodevelopmental Research</h3>
+                    <p>Cutting-edge research on neurodevelopmental disorders, ADHD treatment approaches, and integrative medicine applications in clinical settings.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Consultation Section -->
+    <section id="consultation" class="section consultation-section">
+        <div class="container">
+            <h2 class="section-title">Professional Consultation Process</h2>
+            <p class="section-subtitle">Get expert guidance tailored to your organization's unique health challenges and objectives</p>
+            
+            <div class="consultation-features">
+                <div class="feature-item">
+                    <h4>Strategic Planning</h4>
+                    <p>Comprehensive health program strategy development and implementation planning</p>
+                </div>
+                <div class="feature-item">
+                    <h4>Policy Development</h4>
+                    <p>Evidence-based health policy formulation and regulatory guidance</p>
+                </div>
+                <div class="feature-item">
+                    <h4>Research Design</h4>
+                    <p>Methodologically sound research protocols and evaluation frameworks</p>
+                </div>
+                <div class="feature-item">
+                    <h4>Capacity Building</h4>
+                    <p>Training and development programs for healthcare professionals and organizations</p>
+                </div>
+            </div>
+            
+            <div class="consultation-process">
+                <h3 style="margin-bottom: 2rem; text-align: center; font-family: 'Playfair Display', serif;">Our Consultation Process</h3>
+                
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <div>
+                        <h4>Initial Assessment</h4>
+                        <p>Comprehensive analysis of your current situation, challenges, and organizational needs</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <div>
+                        <h4>Customized Solutions</h4>
+                        <p>Tailored recommendations and strategies based on evidence-based practices and industry best practices</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <div>
+                        <h4>Implementation Support</h4>
+                        <p>Ongoing guidance and support throughout the project lifecycle to ensure successful execution</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <div>
+                        <h4>Follow-up Evaluation</h4>
+                        <p>Monitoring, assessment, and evaluation of outcomes and impact to measure success</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="#contact" class="cta-button">Request Consultation</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact-section">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <p class="section-subtitle">Ready to discuss your health program needs? Let's connect and explore how THS Solutions can support your objectives</p>
+            
+            <div class="contact-info">
+                <div class="contact-card">
+                    <div class="contact-icon">📧</div>
+                    <h3>Email</h3>
+                    <p><a href="mailto:dr.tah2019@gmail.com">dr.tah2019@gmail.com</a></p>
+                    <p style="color: #718096; font-size: 0.9rem; margin-top: 0.5rem;">Response within 24 hours</p>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon">💼</div>
+                    <h3>LinkedIn</h3>
+                    <p><a href="https://www.linkedin.com/feed/" target="_blank">Connect on LinkedIn</a></p>
+                    <p style="color: #718096; font-size: 0.9rem; margin-top: 0.5rem;">Professional networking</p>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon">🏢</div>
+                    <h3>Business Registration</h3>
+                    <p><strong>KVK Number: 95178686</strong>  
+
+                    Registered in The Netherlands  
+
+                    <em style="color: #2b6cb0;">Officially Licensed & Verified</em></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 THS Solutions. All rights reserved. | Dr. Tahani Saleh - Public Health Consulting | KVK: 95178686</p>
+        </div>
+    </footer>
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', ( ) => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Add fade-in class to elements and observe them
+        document.querySelectorAll('.service-card, .credential-item, .feature-item, .contact-card, .about-stats').forEach(el => {
+            el.classList.add('fade-in');
+            observer.observe(el);
+        });
+
+        // Mobile menu toggle
+        const createMobileMenu = () => {
+            const nav = document.querySelector('nav');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (window.innerWidth <= 768) {
+                if (!document.querySelector('.mobile-menu-btn')) {
+                    const menuBtn = document.createElement('button');
+                    menuBtn.className = 'mobile-menu-btn';
+                    menuBtn.innerHTML = '☰';
+                    menuBtn.style.cssText = 'background: none; border: none; color: #1a365d; font-size: 1.5rem; cursor: pointer;';
+                    
+                    menuBtn.addEventListener('click', () => {
+                        navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+                        if (navLinks.style.display === 'flex') {
+                            navLinks.style.cssText += 'position: absolute; top: 100%; left: 0; right: 0; background: white; flex-direction: column; padding: 1rem; border-radius: 0 0 8px 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);';
+                        }
+                    });
+                    
+                    nav.appendChild(menuBtn);
+                }
+            }
+        };
+
+        window.addEventListener('resize', createMobileMenu);
+        createMobileMenu();
+    </script>
+</body>
+</html>
